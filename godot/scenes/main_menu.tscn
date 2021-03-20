@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/menu_background.webm" type="VideoStream" id=1]
+[ext_resource path="res://assets/video/menu_background.webm" type="VideoStream" id=1]
 [ext_resource path="res://nativescript/main_menu_background.gdns" type="Script" id=2]
+[ext_resource path="res://assets/audio/music/main_menu_theme.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/fonts/SourceSansPro-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/SourceSansPro-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/audio/click.wav" type="AudioStream" id=6]
+[ext_resource path="res://nativescript/main_menu_button.gdns" type="Script" id=7]
+[ext_resource path="res://scenes/World.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+use_filter = true
+font_data = ExtResource( 5 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -19,3 +35,70 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
+pitch_scale = 0.9
+autoplay = true
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.08
+anchor_top = 0.237
+anchor_right = 0.08
+anchor_bottom = 0.237
+margin_top = -44.544
+margin_right = 254.813
+margin_bottom = 43.1258
+custom_fonts/font = SubResource( 1 )
+text = "Monke 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Label" parent="."]
+anchor_left = 0.082
+anchor_top = 0.718
+anchor_right = 0.082
+anchor_bottom = 0.718
+margin_left = 21.6848
+margin_top = -125.578
+margin_right = 106.685
+margin_bottom = -63.5781
+mouse_filter = 0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Play"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+click_sound_player = NodePath("../ClickSoundPlayer")
+video_player = NodePath("../VideoPlayer")
+play_scene = ExtResource( 8 )
+music_player = NodePath("../MusicPlayer")
+
+[node name="ExitButton" type="Label" parent="."]
+anchor_left = 0.082
+anchor_top = 0.718
+anchor_right = 0.082
+anchor_bottom = 0.718
+margin_left = 21.6848
+margin_top = -45.0
+margin_right = 106.685
+margin_bottom = -63.5781
+mouse_filter = 0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Exit"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+click_sound_player = NodePath("../ClickSoundPlayer")
+video_player = NodePath("../VideoPlayer")
+play_scene = ExtResource( 8 )
+music_player = NodePath("../MusicPlayer")
+
+[node name="ClickSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

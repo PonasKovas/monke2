@@ -1,7 +1,14 @@
 [gd_resource type="Environment" load_steps=2 format=2]
 
 [sub_resource type="ProceduralSky" id=1]
+sky_energy = 1.5
+ground_energy = 1.5
+sun_latitude = 39.13
+sun_angle_min = 5.14
 
 [resource]
 background_mode = 2
 background_sky = SubResource( 1 )
+ambient_light_color = Color( 0.996078, 0.984314, 0.705882, 1 )
+dof_blur_far_distance = 22.82
+adjustment_enabled = true
